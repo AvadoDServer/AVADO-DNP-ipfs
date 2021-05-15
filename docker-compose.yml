@@ -1,0 +1,42 @@
+version: '3.4'
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.33.0.0/16
+volumes:
+  ipfsdnpdappnodeeth_export: {}
+  ipfsdnpdappnodeeth_data: {}
+services:
+  ipfs.dnp.dappnode.eth:
+    build:
+      context: ./build
+      args:
+        UPSTREAM_VERSION: v0.7.0
+    image: 'ipfs.dnp.dappnode.eth:10.0.4'
+    container_name: DAppNodeCore-ipfs.dnp.dappnode.eth
+    restart: always
+    volumes:
+      - 'ipfsdnpdappnodeeth_export:/export'
+      - 'ipfsdnpdappnodeeth_data:/data/ipfs'
+    ports:
+      - '4001:4001'
+      - '4002:4002/udp'
+    environment:
+      - EXTRA_OPTS
+      - DATASTORE_STORAGEMAX=50GB
+      - PROFILE=custom
+      - ROUTING=dhtclient
+      - DISCOVERY_MDNS_ENABLED=true
+      - SWARM_DISABLENATPORTMAP=false
+      - REPROVIDER_INTERVAL=12h
+      - SWARM_CONNMGR_LOWWATER=100
+      - SWARM_CONNMGR_HIGHWATER=300
+      - SWARM_CONNMGR_GRACEPERIOD=20s
+    dns: 172.33.1.2
+    networks:
+      network:
+        ipv4_address: 172.33.1.5
+    logging:
+      driver: journald

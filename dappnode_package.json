@@ -1,0 +1,44 @@
+{
+  "name": "ipfs.dnp.dappnode.eth",
+  "version": "10.0.4",
+  "upstream": "v0.7.0",
+  "description": "AVADO package responsible for providing IPFS connectivity",
+  "avatar": "/ipfs/QmQaoHnJp2vugtuyRqU9W8s8CqvWEamKVyBQPWnT5Ndtay",
+  "type": "dncore",
+  "autoupdate": true,
+  "author": "AVADO",
+  "title": "AVADO IPFS node",
+  "keywords": [
+    "IPFS"
+  ],
+  "image": {
+    "path": "ipfs.dnp.dappnode.eth_10.0.4.tar.xz",
+    "hash": "/ipfs/QmWVYfAJ8i8s59ufhHVAYAzqWKThCZRyHWPPPVCooZcoMZ",
+    "size": 23910444,
+    "volumes": [
+      "ipfsdnpdappnodeeth_export:/export",
+      "ipfsdnpdappnodeeth_data:/data/ipfs"
+    ],
+    "restart": "always",
+    "subnet": "172.33.0.0/16",
+    "ipv4_address": "172.33.1.5",
+    "environment": [
+      "EXTRA_OPTS=",
+      "DATASTORE_STORAGEMAX=50GB",
+      "PROFILE=custom",
+      "ROUTING=dhtclient",
+      "DISCOVERY_MDNS_ENABLED=true",
+      "SWARM_DISABLENATPORTMAP=false",
+      "REPROVIDER_INTERVAL=12h",
+      "SWARM_CONNMGR_LOWWATER=100",
+      "SWARM_CONNMGR_HIGHWATER=300",
+      "SWARM_CONNMGR_GRACEPERIOD=20s"
+    ]
+  },
+  "contributors": [],
+  "links": {
+    "webui": "http://ipfs.avadopackage.com:5001/webui"
+  },
+  "license": "GPL-3.0",
+  "builddate": "2021-05-15T14:46:38.078Z"
+}
