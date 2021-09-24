@@ -1,10 +1,10 @@
 version: '3.4'
 networks:
-  network:
+  avado:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.33.0.0/16
+        - subnet: 172.30.0.0/22
 volumes:
   ipfsdnpdappnodeeth_export: {}
   ipfsdnpdappnodeeth_data: {}
@@ -34,9 +34,9 @@ services:
       - SWARM_CONNMGR_LOWWATER=100
       - SWARM_CONNMGR_HIGHWATER=300
       - SWARM_CONNMGR_GRACEPERIOD=20s
-    dns: 172.33.1.2
+    dns: 172.30.0.2
     networks:
-      network:
-        ipv4_address: 172.33.1.5
+      avado:
+        ipv4_address: 172.30.0.5
     logging:
       driver: journald
