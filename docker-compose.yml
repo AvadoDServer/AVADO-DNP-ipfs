@@ -1,10 +1,7 @@
-version: '3.4'
+version: '3.5'
 networks:
   avado:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.30.0.0/22
+    external: true   
 volumes:
   ipfsdnpdappnodeeth_export: {}
   ipfsdnpdappnodeeth_data: {}
