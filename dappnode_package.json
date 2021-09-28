@@ -13,8 +13,8 @@
   ],
   "image": {
     "path": "ipfs.dnp.dappnode.eth_10.0.4.tar.xz",
-    "hash": "/ipfs/QmWVYfAJ8i8s59ufhHVAYAzqWKThCZRyHWPPPVCooZcoMZ",
-    "size": 23910444,
+    "hash": "/ipfs/QmVKbXoi46K7x7uDX6Rh2uvbmaVg3Y72GHudVTN5SPMXq6",
+    "size": 23920676,
     "volumes": [
       "ipfsdnpdappnodeeth_export:/export",
       "ipfsdnpdappnodeeth_data:/data/ipfs"
@@ -40,5 +40,5 @@
     "webui": "http://ipfs.avadopackage.com:5001/webui"
   },
   "license": "GPL-3.0",
-  "builddate": "2021-05-15T14:46:38.078Z"
+  "builddate": "2021-09-28T15:11:32.909Z"
 }
