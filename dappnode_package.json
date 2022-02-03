@@ -12,12 +12,12 @@
     "IPFS"
   ],
   "image": {
-    "path": "ipfs.dnp.dappnode.eth_10.0.4.tar.xz",
-    "hash": "/ipfs/QmWVYfAJ8i8s59ufhHVAYAzqWKThCZRyHWPPPVCooZcoMZ",
-    "size": 23910444,
     "volumes": [
       "ipfsdnpdappnodeeth_export:/export",
       "ipfsdnpdappnodeeth_data:/data/ipfs"
+    ],
+    "ports": [
+      "4001:4001"
     ],
     "restart": "always",
     "subnet": "172.33.0.0/16",
@@ -27,8 +27,6 @@
       "DATASTORE_STORAGEMAX=50GB",
       "PROFILE=custom",
       "ROUTING=dhtclient",
-      "DISCOVERY_MDNS_ENABLED=true",
-      "SWARM_DISABLENATPORTMAP=false",
       "REPROVIDER_INTERVAL=12h",
       "SWARM_CONNMGR_LOWWATER=100",
       "SWARM_CONNMGR_HIGHWATER=300",
@@ -39,6 +37,5 @@
   "links": {
     "webui": "http://ipfs.avadopackage.com:5001/webui"
   },
-  "license": "GPL-3.0",
-  "builddate": "2021-05-15T14:46:38.078Z"
+  "license": "GPL-3.0"
 }
