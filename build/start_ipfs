@@ -28,8 +28,8 @@ else
 fi
 
 ipfs config Routing.Type "${ROUTING}"
-ipfs config --json Discovery.MDNS.Enabled ${DISCOVERY_MDNS_ENABLED}
-ipfs config --json Swarm.DisableNatPortMap ${SWARM_DISABLENATPORTMAP}
+ipfs config --json Discovery.MDNS.Enabled false
+ipfs config --json Swarm.DisableNatPortMap true
 ipfs config --json Reprovider.Interval "\"${REPROVIDER_INTERVAL}\""
 ipfs config --json Swarm.ConnMgr.LowWater "${SWARM_CONNMGR_LOWWATER}"
 ipfs config --json Swarm.ConnMgr.HighWater "${SWARM_CONNMGR_HIGHWATER}"
@@ -39,6 +39,9 @@ ipfs config Addresses.Gateway /ip4/0.0.0.0/tcp/8080
 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST"]'
 ipfs config --json Datastore.StorageMax "\"$DATASTORE_STORAGEMAX\""
+# avoid scanning for peers on local networks - datacenters do not like this
+echo "Applying server profile"
+ipfs config profile apply server
 
 # if the first argument is daemon
 if [ "$1" = "daemon" ]; then
