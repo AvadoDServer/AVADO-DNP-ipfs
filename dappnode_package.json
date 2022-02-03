@@ -35,7 +35,7 @@
   },
   "contributors": [],
   "links": {
-    "webui": "http://ipfs.avadopackage.com:5001/webui"
+    "webui": "http://ipfs.my.ava.do:5001/webui"
   },
   "license": "GPL-3.0"
 }
