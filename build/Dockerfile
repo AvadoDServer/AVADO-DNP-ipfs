@@ -1,4 +1,4 @@
-FROM golang:1.15-buster
+FROM --platform=linux/amd64 golang:1.15-buster
 
 ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
 
@@ -40,7 +40,7 @@ RUN set -eux; \
   && chmod +x tini
 
 # Now comes the actual target image, which aims to be as small as possible.
-FROM busybox:1.31.1-glibc
+FROM --platform=linux/amd64 busybox:1.31.1-glibc
 
 # Get the ipfs binary, entrypoint script, and TLS CAs from the build container.
 ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
