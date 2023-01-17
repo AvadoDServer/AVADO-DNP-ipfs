@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 golang:1.15-buster
 
-ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
+ENV SRC_DIR /go/src/github.com/ipfs/kubo
 
 ARG UPSTREAM_VERSION
 
@@ -17,8 +17,8 @@ RUN set -eux; \
   esac; \
   mkdir -p ${SRC_DIR} \
   && cd $SRC_DIR \
-  && wget https://github.com/ipfs/go-ipfs/releases/download/${UPSTREAM_VERSION}/go-ipfs_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz -O $SRC_DIR/go-ipfs_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz \
-  && tar -xzvf go-ipfs_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz
+  && wget https://github.com/ipfs/kubo/releases/download/${UPSTREAM_VERSION}/kubo_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz -O $SRC_DIR/kubo_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz \
+  && tar -xzvf kubo_${UPSTREAM_VERSION}_linux-${dpkgArch}.tar.gz
 
 # Get su-exec, a very minimal tool for dropping privileges,
 # and tini, a very minimal init daemon for containers
@@ -43,8 +43,8 @@ RUN set -eux; \
 FROM --platform=linux/amd64 busybox:1.31.1-glibc
 
 # Get the ipfs binary, entrypoint script, and TLS CAs from the build container.
-ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
-COPY --from=0 $SRC_DIR/go-ipfs/ipfs /usr/local/bin/ipfs
+ENV SRC_DIR /go/src/github.com/ipfs/kubo
+COPY --from=0 $SRC_DIR/kubo/ipfs /usr/local/bin/ipfs
 COPY --from=0 /tmp/su-exec/su-exec /sbin/su-exec
 COPY --from=0 /tmp/tini /sbin/tini
 COPY --from=0 /etc/ssl/certs /etc/ssl/certs

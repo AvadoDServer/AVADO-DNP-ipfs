@@ -13,8 +13,8 @@ services:
     build:
       context: ./build
       args:
-        UPSTREAM_VERSION: v0.7.0
-    image: 'ipfs.dnp.dappnode.eth:10.0.5'
+        UPSTREAM_VERSION: v0.17.0
+    image: 'ipfs.dnp.dappnode.eth:10.0.6'
     container_name: DAppNodeCore-ipfs.dnp.dappnode.eth
     restart: always
     volumes:
@@ -26,7 +26,6 @@ services:
     environment:
       - EXTRA_OPTS
       - DATASTORE_STORAGEMAX=50GB
-      - PROFILE=custom
       - ROUTING=dhtclient
       - REPROVIDER_INTERVAL=12h
       - SWARM_CONNMGR_LOWWATER=100
