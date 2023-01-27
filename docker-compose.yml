@@ -26,6 +26,7 @@ services:
     environment:
       - EXTRA_OPTS
       - DATASTORE_STORAGEMAX=50GB
+      - PROFILE=server
       - ROUTING=dhtclient
       - REPROVIDER_INTERVAL=12h
       - SWARM_CONNMGR_LOWWATER=100
