@@ -16,7 +16,7 @@ ROUTING=${ROUTING:-"dht"}
 # 2nd invocation with regular user
 ipfs version
 
-if [ -e "$repo/migrate2" ]; then
+if [ -e "$repo/migrate3" ]; then
     echo "Found IPFS fs-repo at $repo"
 else
     echo "Clearing old repo"
@@ -24,7 +24,7 @@ else
     echo "Initializing blank repo"
     ipfs init
     # put migration file there so next time this does not run any more
-    echo >$repo/migrate2
+    echo >$repo/migrate3
 fi
 
 ipfs config Routing.Type "${ROUTING}"
